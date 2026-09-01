@@ -108,6 +108,8 @@ The project covers database initialization, stored-procedure-based ETL pipelines
         ├── Report_customers.sql             # Customer behavioral reporting view
         └── Report_products.sql              # Product performance reporting view
 ```
+---
+
 ## 📊 Analytics & Reporting Capabilities
 
 ### 1. Exploratory Data Analysis (EDA)
@@ -126,7 +128,8 @@ The project covers database initialization, stored-procedure-based ETL pipelines
 ### 3. Business Reporting Views (`gold.report_*`)
 * **`gold.report_products`**: Consolidates orders, units sold, total revenue, product lifespan, recency in months, performance tiering (`High-Performer`, `Mid-Range`, `Low-Performer`), Average Order Revenue (AOR), and average monthly revenue.
 * **`gold.report_customers`**: Consolidates customer lifespan, demographic age brackets, loyalty tiers (`VIP`, `Regular`, `New`), purchase recency, Average Order Value (AOV), and average monthly spend.
-
+* 
+---
 
 ## 👤 Author & Contact
 * **Author**: Mustapha Outgougua
