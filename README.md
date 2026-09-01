@@ -1,4 +1,4 @@
-# 🏢 SQL Data Warehouse & Analytics Engine (Medallion Architecture)
+# SQL Data Warehouse & Analytics Engine (Medallion Architecture)
 
 ![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-red?logo=microsoftsqlserver)
 ![Data Architecture](https://img.shields.io/badge/Architecture-Medallion%20(Bronze%20%7C%20Silver%20%7C%20Gold)-blue)
