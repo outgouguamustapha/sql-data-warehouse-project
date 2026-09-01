@@ -131,4 +131,4 @@ The project covers database initialization, stored-procedure-based ETL pipelines
 ## 👤 Author & Contact
 * **Author**: Mustapha Outgougua
 * **GitHub**: [github.com/outgouguamustapha](https://github.com/outgouguamustapha)
-* **LinkedIn**: [linkedin.com/in/mustapha-outgougua]([#](https://www.linkedin.com/in/mustapha-outgougua/))
+* **LinkedIn**: [linkedin.com/in/mustapha-outgougua](https://www.linkedin.com/in/mustapha-outgougua)
