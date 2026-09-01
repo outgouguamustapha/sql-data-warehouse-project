@@ -1,4 +1,4 @@
-# SQL Data Warehouse & Analytics Engine (Medallion Architecture)
+# 🏢 SQL Data Warehouse & Analytics Engine (Medallion Architecture)
 
 ![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-red?logo=microsoftsqlserver)
 ![Data Architecture](https://img.shields.io/badge/Architecture-Medallion%20(Bronze%20%7C%20Silver%20%7C%20Gold)-blue)
@@ -9,22 +9,23 @@
 
 ## 📌 Project Overview
 
-This repository contains an end-to-end Data Warehouse and Business Intelligence solution developed using Microsoft SQL Server and modeled on the **Medallion Data Architecture** (Bronze $\rightarrow$ Silver $\rightarrow$ Gold). The data warehouse ingests raw source datasets, cleanses and standardizes records, transforms entities into a Star Schema, and serves analytical key performance indicators (KPIs) through dedicated SQL reporting views.
+This repository contains an end-to-end Data Warehouse and Business Intelligence solution developed using Microsoft SQL Server and modeled on the **Medallion Data Architecture** (Bronze $\rightarrow$ Silver $\rightarrow$ Gold). The data warehouse ingests source transaction and CRM data, applies data quality rules, transforms records into an analytical Star Schema, and serves business-facing reporting views.
 
-The pipeline handles database initialization, stored-procedure-based ETL extraction, data transformations, exploratory data analysis (EDA), advanced window-based time-series analytics, customer segmentation, and executive reporting views.
+The project covers database initialization, stored-procedure-based ETL pipelines, dimension and fact modeling, exploratory data analysis (EDA), advanced window-based time-series analytics, customer/product segmentation, and consolidated reporting views.
 
 ---
 
 ## 🏗️ Data Architecture & Pipeline
+
 [ Source ERP & CRM Datasets ]
 │
-▼ (Bulk Ingestion / Raw Staging)
+▼ (Bulk Ingestion / Staging)
 🥉 Bronze Layer (bronze.ddl_bronze, bronze.proc_load_bronze)
 │
 ▼ (Data Cleansing, Deduplication, Standardization)
 🥈 Silver Layer (silver.ddl_silver, silver.proc_load_silver)
 │
-▼ (Star Schema Modeling, Surrogate Keys, Conformed Dimensions)
+▼ (Star Schema Modeling, Surrogate Keys, Dimension Conforming)
 🥇 Gold Layer   (gold.dim_customers, gold.dim_products, gold.fact_sales)
 │
 ├──► 📊 Gold Reporting Views (gold.report_products, gold.report_customers)
@@ -52,7 +53,7 @@ The pipeline handles database initialization, stored-procedure-based ETL extract
 
 ## ⚙️ Project Requirements
 
-### Database & Platform
+### Database & Environment
 * **Database Engine**: Microsoft SQL Server 2019+ or Azure SQL Database
 * **Supported Client Tools**:
   * SQL Server Management Studio (SSMS) v19+
@@ -67,10 +68,10 @@ The pipeline handles database initialization, stored-procedure-based ETL extract
 
 ---
 
-## 📂 Repository Structure
+## 📂 Repository Layout
 
 ```plaintext
-├── datasets/                                 # Dimensional schemas & datasets
+├── datasets/                                 # Dataset definition scripts
 │   └── ddl_gold.sql                         # Gold star schema definitions
 ├── docs/                                     # Diagrams, specs & data catalogs
 │   ├── data model.drawio.png                # Star schema ERD
@@ -84,9 +85,11 @@ The pipeline handles database initialization, stored-procedure-based ETL extract
 │   ├── bronze/
 │   │   ├── ddl_bronze.sql                   # Bronze layer DDL
 │   │   └── proc_load_bronze.sql             # Bronze bulk load stored procedure
-│   └── silver/
-│       ├── ddl_silver.sql                   # Silver layer DDL
-│       └── proc_load_silver.sql             # Silver ETL transformation procedure
+│   ├── silver/
+│   │   ├── ddl_silver.sql                   # Silver layer DDL
+│   │   └── proc_load_silver.sql             # Silver ETL transformation procedure
+│   └── gold/
+│       └── ddl_gold.sql                     # Gold dimensional DDL views
 └── data analytics/                           # Analytics & BI SQL scripts
     ├── Exploratory data analysis/
     │   ├── 01_database_exploration.sql      # Schema metadata inspection
@@ -105,37 +108,34 @@ The pipeline handles database initialization, stored-procedure-based ETL extract
         ├── Report_customers.sql             # Customer behavioral reporting view
         └── Report_products.sql              # Product performance reporting view
 ```
-
 📊 Analytics & Reporting Capabilities
 1. Exploratory Data Analysis (EDA)
-Metadata & Dimensions: Validates schema definitions using INFORMATION_SCHEMA and audits unique categories and geographic territories[cite: 1].
+Metadata & Dimensions: Validates schema definitions using INFORMATION_SCHEMA and audits unique categories and geographic territories.
 
-Time Horizons & Demographics: Detects temporal boundaries (MIN/MAX dates) and demographic ranges (youngest vs. oldest customer profiles)[cite: 1].
+Time Horizons & Demographics: Detects temporal boundaries (MIN/MAX dates) and demographic ranges (youngest vs. oldest customer profiles)].
 
-Measures & Magnitude: Aggregates gross revenue, total physical units sold, distinct orders, and registered vs. purchasing customer accounts[cite: 1].
+Measures & Magnitude: Aggregates gross revenue, total physical units sold, distinct orders, and registered vs. purchasing customer accounts.
 
-Ranking: Evaluates top-performing products and high-value customer accounts using window functions (RANK() OVER (...)) and TOP clauses[cite: 1].
+Ranking: Evaluates top-performing products and high-value customer accounts using window functions (RANK() OVER (...)) and TOP clauses.
 
 2. Advanced Analytics Suite
-Time-Series Analysis: Tracks revenue trends and seasonality over chronological intervals using DATETRUNC(), DATEPART(), and FORMAT()[cite: 1].
+Time-Series Analysis: Tracks revenue trends and seasonality over chronological intervals using DATETRUNC(), DATEPART(), and FORMAT().
 
-Cumulative Computations: Calculates progressive running sales totals and baseline moving price averages using SUM() OVER (ORDER BY ...)[cite: 1].
+Cumulative Computations: Calculates progressive running sales totals and baseline moving price averages using SUM() OVER (ORDER BY ...)
 
-Performance Benchmarking: Analyzes Year-over-Year (YoY) revenue changes using LAG() and benchmarks yearly sales against product historical baselines[cite: 1].
+Performance Benchmarking: Analyzes Year-over-Year (YoY) revenue changes using LAG() and benchmarks yearly sales against product historical baselines.
 
-Entity Segmentation: Classifies product catalog items into cost bands and assigns customers into VIP, Regular, and New loyalty tiers based on tenure and lifetime spend[cite: 1].
+Entity Segmentation: Classifies product catalog items into cost bands and assigns customers into VIP, Regular, and New loyalty tiers based on tenure and lifetime spend.
 
-Part-to-Whole Share: Evaluates category-level revenue contributions as a percentage of total enterprise sales using SUM() OVER ()[cite: 1].
+Part-to-Whole Share: Evaluates category-level revenue contributions as a percentage of total enterprise sales using SUM() OVER ().
 
 3. Business Reporting Views (gold.report_*)
-gold.report_products: Consolidates orders, units sold, total revenue, product lifespan, recency in months, performance tiering (High-Performer, Mid-Range, Low-Performer), Average Order Revenue (AOR), and average monthly revenue[cite: 1].
+gold.report_products: Consolidates orders, units sold, total revenue, product lifespan, recency in months, performance tiering (High-Performer, Mid-Range, Low-Performer), Average Order Revenue (AOR), and average monthly revenue.
 
-gold.report_customers: Consolidates customer lifespan, demographic age brackets, loyalty tiers (VIP, Regular, New), purchase recency, Average Order Value (AOV), and average monthly spend[cite: 1].
+gold.report_customers: Consolidates customer lifespan, demographic age brackets, loyalty tiers (VIP, Regular, New), purchase recency, Average Order Value (AOV), and average monthly spend.
 
 
-🛡️ Engineering & Quality Standards
-Idempotent Deployments: All DDL and view scripts include conditional existence checks (IF OBJECT_ID(...) IS NOT NULL DROP...) for clean repeatability[cite: 1].
-
-Defensive Arithmetic: Calculation ratios (such as AOV, monthly spend velocity, and growth rates) protect against division-by-zero errors through conditional checks.
-
-Modular Codebase: Transformation procedures and DDL scripts are decoupled across the Bronze, Silver, and Gold schemas to enforce clear separation of concerns[cite: 1].
+## 👤 Author & Contact
+* **Author**: Mustapha Outgougua
+* **GitHub**: [github.com/outgouguamustapha](https://github.com/outgouguamustapha)
+* **LinkedIn**: [linkedin.com/in/mustapha-outgougua]([#](https://www.linkedin.com/in/mustapha-outgougua/))
