@@ -111,21 +111,21 @@ The project covers database initialization, stored-procedure-based ETL pipelines
 ## 📊 Analytics & Reporting Capabilities
 
 ### 1. Exploratory Data Analysis (EDA)
-* **Metadata & Dimensions**: Validates schema definitions using `INFORMATION_SCHEMA` and audits unique categories and geographic territories[cite: 1, 2].
-* **Time Horizons & Demographics**: Detects temporal boundaries (`MIN`/`MAX` dates) and demographic ranges (youngest vs. oldest customer profiles)[cite: 1, 2].
-* **Measures & Magnitude**: Aggregates gross revenue, total physical units sold, distinct orders, and registered vs. purchasing customer accounts[cite: 1, 2].
-* **Ranking**: Evaluates top-performing products and high-value customer accounts using window functions (`RANK() OVER (...)`) and `TOP` clauses[cite: 1, 2].
+* **Metadata & Dimensions**: Validates schema definitions using `INFORMATION_SCHEMA` and audits unique categories and geographic territories.
+* **Time Horizons & Demographics**: Detects temporal boundaries (`MIN`/`MAX` dates) and demographic ranges (youngest vs. oldest customer profiles).
+* **Measures & Magnitude**: Aggregates gross revenue, total physical units sold, distinct orders, and registered vs. purchasing customer accounts.
+* **Ranking**: Evaluates top-performing products and high-value customer accounts using window functions (`RANK() OVER (...)`) and `TOP` clauses.
 
 ### 2. Advanced Analytics Suite
-* **Time-Series Analysis**: Tracks revenue trends and seasonality over chronological intervals using `DATETRUNC()`, `DATEPART()`, and `FORMAT()`[cite: 1, 2].
-* **Cumulative Computations**: Calculates progressive running sales totals and baseline moving price averages using `SUM() OVER (ORDER BY ...)`[cite: 1, 2].
-* **Performance Benchmarking**: Analyzes Year-over-Year (YoY) revenue changes using `LAG()` and benchmarks yearly sales against product historical baselines[cite: 1, 2].
-* **Entity Segmentation**: Classifies product catalog items into cost bands and assigns customers into `VIP`, `Regular`, and `New` loyalty tiers based on tenure and lifetime spend[cite: 1, 2].
-* **Part-to-Whole Share**: Evaluates category-level revenue contributions as a percentage of total enterprise sales using `SUM() OVER ()`[cite: 1, 2].
+* **Time-Series Analysis**: Tracks revenue trends and seasonality over chronological intervals using `DATETRUNC()`, `DATEPART()`, and `FORMAT()`.
+* **Cumulative Computations**: Calculates progressive running sales totals and baseline moving price averages using `SUM() OVER (ORDER BY ...)`.
+* **Performance Benchmarking**: Analyzes Year-over-Year (YoY) revenue changes using `LAG()` and benchmarks yearly sales against product historical baselines.
+* **Entity Segmentation**: Classifies product catalog items into cost bands and assigns customers into `VIP`, `Regular`, and `New` loyalty tiers based on tenure and lifetime spend.
+* **Part-to-Whole Share**: Evaluates category-level revenue contributions as a percentage of total enterprise sales using `SUM() OVER ()`.
 
 ### 3. Business Reporting Views (`gold.report_*`)
-* **`gold.report_products`**: Consolidates orders, units sold, total revenue, product lifespan, recency in months, performance tiering (`High-Performer`, `Mid-Range`, `Low-Performer`), Average Order Revenue (AOR), and average monthly revenue[cite: 1, 2].
-* **`gold.report_customers`**: Consolidates customer lifespan, demographic age brackets, loyalty tiers (`VIP`, `Regular`, `New`), purchase recency, Average Order Value (AOV), and average monthly spend[cite: 1, 2].
+* **`gold.report_products`**: Consolidates orders, units sold, total revenue, product lifespan, recency in months, performance tiering (`High-Performer`, `Mid-Range`, `Low-Performer`), Average Order Revenue (AOR), and average monthly revenue.
+* **`gold.report_customers`**: Consolidates customer lifespan, demographic age brackets, loyalty tiers (`VIP`, `Regular`, `New`), purchase recency, Average Order Value (AOV), and average monthly spend.
 
 
 ## 👤 Author & Contact
